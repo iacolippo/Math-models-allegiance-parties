@@ -26,15 +26,10 @@ density = 35.5 # density per squared km of population
 influence_area= 100 # squared kilometer of efficacy
 
 #defining random constants
-#a1 = randomic(N, density, influence_area)
-#a2 = randomic(N, density, influence_area)
-#b1 = randomic(N, density, influence_area)
-#b2 = randomic(N, density, influence_area)
-
-a1 = 0.205
-a2 = 0.3
-b1 = 0.19
-b2 = 0.29
+a1 = randomic(N, density, influence_area)
+a2 = randomic(N, density, influence_area)
+b1 = randomic(N, density, influence_area)
+b2 = randomic(N, density, influence_area)
 
 print 'a1:', a1
 print 'a2:', a2
