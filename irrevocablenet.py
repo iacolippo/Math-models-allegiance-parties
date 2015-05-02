@@ -53,29 +53,29 @@ l = int(round(math.log(x), 0)) 			#scalefree are ultra-smallworld network with L
 p = 0.1
 k = 3
 
-q1=0.65 #green threshold party1
+q1=0.35 #green threshold party1
 q2=0.75 #red threshold party2
 #susceptibles = blue
 
-def init():
+def init(): #initializes the graph
 	global g, positions
     
-	g = nx.connected_watts_strogatz_graph(n, l, p, tries=100, seed=None) #WS connected graph generator
-	#g = nx.barabasi_albert_graph(n, l, seed=None)						 #BA graph generator (can be non-connected)
+	#g = nx.connected_watts_strogatz_graph(n, l, p, tries=100, seed=None) #WS connected graph generator
+	g = nx.barabasi_albert_graph(n, l, seed=None)						 #BA graph generator (can be non-connected)
 	critical = nx.betweenness_centrality(g)
 	keynodes = critical.values()
-	flag = 0
+	
 	for nd in g.nodes_iter():
-		if keynodes[nd]>0.43: 							#average value of ten highest bc over repeated iterations for WS
-		#if keynodes[nd]<0.0001: 						#average value of ten highest bc over repeated iterations for BA
+		#if keynodes[nd]>0.43: 							#average value of ten highest bc over repeated iterations for WS
+		if keynodes[nd]<0.0001: 						#average value of ten highest bc over repeated iterations for BA
 			g.node[nd]['state'] = rnd.choice([1, 2])
 		else:
 			g.node[nd]['state'] = 0 
 	
-	positions = nx.circular_layout(g)       #for WS networks
-	#positions = nx.spectral_layout(g)      #for BA networks
+	#positions = nx.circular_layout(g)       #for WS networks
+	positions = nx.spectral_layout(g)      #for BA networks
 
-def draw():
+def draw(): #draws the graph
     PL.cla()
     nx.draw(g, with_labels = False, pos = positions,
             node_color = [g.node[n]['state'] for n in g.nodes_iter()],
@@ -83,22 +83,40 @@ def draw():
 				
 def mystep():
 	global g
+	
 	for n in g.nodes_iter():
+	
 		listener = g.nodes()[n]
 		neighbourhood = g.neighbors(listener)
-		if neighbourhood != []:
+		
+		if neighbourhood != []: #checks if a neighboorhood exists
+		
 			flag_party1 = 0
 			flag_party2 = 0
-			for nd in neighbourhood:
+			check1 = 0
+			check2 = 0
+			
+			for nd in neighbourhood: #checks in what state are the neighbors
 				if g.node[nd]['state'] == 1:
 					flag_party1 = flag_party1+1
 				if g.node[nd]['state'] == 2:
 					flag_party2 = flag_party2+1
+			
 			if flag_party1+flag_party2 != 0:
 				if flag_party1/float(flag_party1+flag_party2) > q1:
 					g.node[listener]['state'] = 1
+					check1 = 1
 				if flag_party2/float(flag_party1+flag_party2) > q2:
-					g.node[listener]['state'] = 2	
+					g.node[listener]['state'] = 2
+					check2 = 1
+			
+			if	check1+check2 >1: #if two threshold are satisfied, chooses the lower one
+				a=[q1, q2]
+				a.sort()
+				if a[0] == q1:
+					g.node[listener]['state'] = 1
+				elif a[0] == q2:
+					g.node[listener]['state'] = 2
     
 import pycxsimulator
 pycxsimulator.GUI().start(func=[init,draw,mystep])
