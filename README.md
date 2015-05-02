@@ -8,7 +8,7 @@ Graph theory approach is carried out by accounting the social network as a scale
 models, the dynamic one is pursued by solving systems of ordinary differential equations, evaluating if an 
 equilibrium is reached and which type of equilibrium it is.
 
-Source codes used to run numerical simulations can be found at specific Github repository: \url{}
+COPYRIGHT DISCLAIMER
 
 PyCX 0.31
 Complex Systems Simulation Sample Code Repository
