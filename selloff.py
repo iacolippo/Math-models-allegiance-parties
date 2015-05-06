@@ -8,26 +8,38 @@ N = 1000 # population sample
 density = 35.5 # density per squared km of population
 influence_area= 100 # squared kilometer of efficacy
 
-# defining and printing random constants
+#defining random constants
+
+#fidelity rates
 a1 = randomic(N, density, influence_area)
 a2 = randomic(N, density, influence_area)
+#rates of return
+b1 = randomic(N, density, influence_area)
+b2 = randomic(N, density, influence_area)
+#rates of exchange
+s1 = randomic(N, density, influence_area)
+s2 = randomic(N, density, influence_area)
 
-print 'a1=', a1
-print 'a2=', a2
+print 'a1:', a1
+print 'a2:', a2
+print 'b1:', b1
+print 'b2:', b2
+print 's1:', s1
+print 's2:', s2
 
-# defining system of equations
+#defining system of equations
 def f(y, t):
         S = y[0]
         L1 = y[1]
         L2 = y[2]
-        # model equations
-        f0 = -a1*S*L1-a2*S*L2           
-        f1 = a1*S*L1                         
-        f2 = a2*S*L2                         
+        # the model equations
+        f0 = -a1*L1*S-a2*L2*S+b1*L1*S+b2*L2*S                        
+        f1 = a1*L1*S-b1*L1*S+s1*L1*L2-s2*L1*L2
+        f2 = a2*S*L2-b2*L2*S-s1*L1*L2+s2*L1*L2                  
         return [f0, f1, f2]
 
 # initial conditions
-S = N-2               # initial population of susceptibles
+S = N-2               # initial population
 L1 = 1                  # initial loyal to party 1 population
 L2 = 1                  # initial loyal to party 2 population
 y0 = [S, L1, L2]       # initial condition vector
@@ -41,12 +53,11 @@ L2 = soln[:, 2]
 
 # plot results
 plt.figure()
-plt.plot(t, S/N, label='Susceptibles')
-plt.plot(t, L1/N, label='Loyal 1')
-plt.plot(t, L2/N, label='Loyal 2')
+plt.plot(t, S, label='Susceptibles')
+plt.plot(t, L1, label='Loyal 1')
+plt.plot(t, L2, label='Loyal 2')
 plt.xlabel('Months from start of the campaign')
 plt.ylabel('Population')
 plt.title('Campaign - No Init. Pop. of Loyals')
 plt.legend(loc=0)
-plt.autoscale(enable=True, axis='both', tight=None)
 plt.pause(120)
