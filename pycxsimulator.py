@@ -15,7 +15,6 @@
 ## Copyright 2013 Przemyslaw Szufel & Bogumil Kaminski
 ## {pszufe, bkamins}@sgh.waw.pl
 ##
-##
 ## The following two lines should be placed at the beginning of your simulator code:
 ##
 ## import matplotlib

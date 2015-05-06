@@ -128,7 +128,7 @@ def mystep():
 				g.node[n]['state'] = 2
 				check[5] = 1
 			
-			if sum_vector(check, len(check)) > 1: #if more than one threshold is satisfied, chooses the one with lowest threshold
+			if sum_vector(check, len(check)) > 1: 	#if more than one threshold is satisfied, chooses the one with lowest threshold
 				
 				for n in range(0, len(check)):
 					if check[n] == 1:

@@ -1,7 +1,7 @@
 '''This program simulates Irrevocable model described in "Mathematical modeling of 
 	allegiance to political parties", Iacopo Poli, 2015
 	
-    Copyright (C) 2015  Iacopo Poli
+    Copyright (C) 2015 - Iacopo Poli
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

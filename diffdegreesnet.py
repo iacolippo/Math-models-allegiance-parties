@@ -54,7 +54,7 @@ p = 0.1
 k = 5
 
 q1 = 0.10 #mildly1 light blue
-q2 = 0.15 #mildly 2 orange
+q2 = 0.15 #mildly2 orange
 b1 = 0.35
 b2 = 0.20
 s1 = 0.1

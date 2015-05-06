@@ -1,7 +1,7 @@
 import random as rnd
 
-#randomic takes population, density of population per squared kilometer and area of influence in squared kilometers
-#and returns a coefficient of conversion per unit time
+'''randomic takes population, density of population per squared kilometer and area of influence in squared kilometers
+and returns a coefficient of conversion per unit time'''
 
 def randomic(pop, avg, area):
 
@@ -10,7 +10,7 @@ def randomic(pop, avg, area):
     rand_a = (avg*area/float(pop))*deviation
     return rand_a
 
-# sum_vector takes a vector and return the sum of his elements
+'''sum_vector takes a vector and return the sum of his elements'''
 
 def sum_vector(vector, length):
 

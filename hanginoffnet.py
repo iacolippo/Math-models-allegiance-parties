@@ -75,7 +75,7 @@ def init():
 			g.node[nd]['state'] = 0 
 	
 	#positions = nx.circular_layout(g)       #for WS networks
-	positions = nx.spectral_layout(g)      #for BA networks
+	positions = nx.spectral_layout(g)        #for BA networks
 
 def draw(): #draws the graph
     PL.cla()
