@@ -1,12 +1,10 @@
 # Math-models-allegiance-parties
 
 In this paper we try to describe the spread of behaviors in two different ways: 
-graph theory and linear \& non-linear dynamics, starting from the key-concept "ideas like diseases". 
+graph theory and non-linear dynamics, starting from the key-concept "ideas like diseases". 
 The spread of ideas and behaviors is actually known as social contagion too. 
 The key difference is that "infection process" is more complex and therefore modeled as a random mechanism. 
-Graph theory approach is carried out by accounting the social network as a scale-free network and employing epidemic 
-models, the dynamic one is pursued by solving systems of ordinary differential equations, evaluating if an 
-equilibrium is reached and which type of equilibrium it is.
+Graph theory approach is carried out by accounting the social network as a small-world and scale-free network and employing epidemic models, the dynamic one is pursued by solving systems of ordinary differential equations, evaluating if an equilibrium is reached and which type of equilibrium it is.
 
 COPYRIGHT DISCLAIMER
 
